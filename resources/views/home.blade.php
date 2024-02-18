@@ -5,12 +5,15 @@
     <div class="row">
       <div class="col-md-3">
         {{-- Minimal with title, text and icon --}}
-        <x-adminlte-small-box title="Title" text="some text" icon="fas fa-star" url="#" theme="danger" url-text="View details" />
+        <x-adminlte-small-box title="Title" text="some text" icon="fas fa-star" url="#" theme="danger"
+          url-text="View details" />
       </div>
       <div class="col-md-3">
         {{-- Loading --}}
-        <x-adminlte-small-box title="Loading" text="Loading data..." icon="fas fa-chart-bar" theme="info" url="#"
-          url-text="More info" loading />
+        @can('superadmin')
+          <x-adminlte-small-box title="Loading" text="Loading data..." icon="fas fa-chart-bar" theme="info" url="#"
+            url-text="More info" loading />
+        @endcan
       </div>
       <div class="col-md-3">
 
@@ -44,4 +47,7 @@
       </div>
     </div>
   </div>
+@stop
+@section('footer')
+  @include('components.footer')
 @endsection

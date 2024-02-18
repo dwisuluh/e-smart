@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ijin_dosens', function (Blueprint $table) {
+        Schema::create('anggota_ijins', function (Blueprint $table) {
             $table->id();
-            $table->string('pengusul');
-            $table->date('tgl_mulai');
-            $table->date('tgl_selesai');
-            $table->text('tujuan');
-            $table->text('kegiatan');
-            $table->string('file_path');
+            $table->foreignId('ijin_dosen_id')->constrained()->onDelete('cascade');
+            $table->foreignId('dosen_id')->constrained()->onDelete('cascade');
             $table->enum('status',['1','2','3','4','5'])->default('1');
             $table->timestamps();
         });
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ijin_dosens');
+        Schema::dropIfExists('anggota_ijins');
     }
 };

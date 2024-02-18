@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -42,4 +43,34 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function adminlte_image()
+    {
+        // return 'https://picsum.photos/300/300';
+        return Auth::user()->avatar;
+    }
+    public function adminlte_desc()
+    {
+        return 'That\'s a nice guy';
+    }
+    public function adminlte_profile_url()
+    {
+        return 'profile/username';
+    }
+
+    public function getRoleAttribute($value)
+    {
+        switch ($value) {
+            case 1:
+                return 'superadmin';
+            case 2:
+                return 'admin';
+            case 3:
+                return 'Verifikator'; // Sesuaikan dengan label yang sesuai untuk nilai ENUM 3
+            case 4:
+                return 'dst'; // Sesuaikan dengan label yang sesuai untuk nilai ENUM 4
+            default:
+                return 'Non Role';
+        }
+    }
 }

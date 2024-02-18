@@ -25,7 +25,7 @@
         @csrf
 
         {{-- Email field --}}
-        <div class="input-group mb-3">
+        {{-- <div class="input-group mb-3">
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                    value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
 
@@ -40,10 +40,10 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        </div>
+        </div> --}}
 
         {{-- Password field --}}
-        <div class="input-group mb-3">
+        {{-- <div class="input-group mb-3">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                    placeholder="{{ __('adminlte::adminlte.password') }}">
 
@@ -58,10 +58,10 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        </div>
+        </div> --}}
 
         {{-- Login field --}}
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-7">
                 <div class="icheck-primary" title="{{ __('adminlte::adminlte.remember_me_hint') }}">
                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -78,6 +78,11 @@
                     {{ __('adminlte::adminlte.sign_in') }}
                 </button>
             </div>
+        </div> --}}
+        <div class="row">
+            <a href="{{ route('google.login') }}" class="btn btn-google btn-user btn-block btn-danger">
+                <i class="fab fa-google fa-fw"></i> Login with Google
+            </a>
         </div>
 
     </form>

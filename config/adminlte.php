@@ -130,11 +130,11 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => false,
-    'usermenu_desc' => false,
-    'usermenu_profile_url' => false,
+    'usermenu_image' => true,
+    'usermenu_desc' => true,
+    'usermenu_profile_url' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -325,21 +325,25 @@ return [
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
+            'can'     => 'admin',
         ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
+            'can'     => 'admin',
         ],
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
+            'can'     => 'admin',
         ],
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
+            'can'     => 'admin',
             'submenu' => [
                 [
                     'text' => 'level_one',
@@ -381,17 +385,21 @@ return [
             'icon'       => 'fas fa-fw fa-users',
             'icon_color' => 'red',
             'url'        => 'user',
+            'can'        => 'superadmin',
         ],
         [
             'text'       => 'Dosen',
             'icon'       => 'fas fa-fw fa-user-graduate',
             'icon_color' => 'yellow',
             'url'        => 'dosen',
+            'active'     => ['dosen*'],
+            'can'        => 'superadmin',
         ],
         [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
+            'can'     => 'admin',
         ],
     ],
 
@@ -430,23 +438,43 @@ return [
     */
 
     'plugins' => [
+        // 'Datatables' => [
+        //     'active' => true,
+        //     'files' => [
+        //         [
+        //             'type' => 'js',
+        //             'asset' => false,
+        //             'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+        //         ],
+        //         [
+        //             'type' => 'js',
+        //             'asset' => false,
+        //             'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+        //         ],
+        //         [
+        //             'type' => 'css',
+        //             'asset' => false,
+        //             'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+        //         ],
+        //     ],
+        // ],
         'Datatables' => [
             'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],
@@ -495,18 +523,38 @@ return [
                 ],
             ],
         ],
+        // 'Select2' => [
+        //     'active' => false,
+        //     'files' => [
+        //         [
+        //             'type' => 'js',
+        //             'asset' => false,
+        //             'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+        //         ],
+        //         [
+        //             'type' => 'css',
+        //             'asset' => false,
+        //             'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+        //         ],
+        //     ],
+        // ],
         'Select2' => [
             'active' => false,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/select2/js/select2.full.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'asset' => true,
+                    'location' => 'vendor/select2/css/select2.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css',
                 ],
             ],
         ],
@@ -521,12 +569,13 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    // 'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => 'vendor/sweetalert2/sweetalert2.all.min.js',
                 ],
             ],
         ],
@@ -627,6 +676,36 @@ return [
                     'type' => 'css',
                     'asset' => true,
                     'location' => 'vendor/daterangepicker/daterangepicker.css',
+                ],
+            ],
+        ],
+        'TempusDominusBs4' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
+                ],
+            ],
+        ],
+        'BsCustomFileInput' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/bs-custom-file-input/bs-custom-file-input.min.js',
                 ],
             ],
         ],
