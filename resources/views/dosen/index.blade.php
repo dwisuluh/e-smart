@@ -15,7 +15,7 @@
   </div>
 @stop
 @section('content')
-  @php
+  {{-- @php
     $heads = ['ID', 'Name', ['label' => 'Phone', 'width' => 40], ['label' => 'Actions', 'no-export' => true, 'width' => 5]];
     $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
         <i class="fa fa-lg fa-fw fa-pen"></i>
@@ -32,16 +32,16 @@
         'order' => [[1, 'asc']],
         'columns' => [null, null, null, ['orderable' => false]],
     ];
-  @endphp
+  @endphp --}}
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-md-12">
         <x-adminlte-card title="Master Data Dosen" theme="primary" icon="fas fa-lg fa-user-graduate">
-          <div class="row">
+          {{-- <div class="row">
             <x-adminlte-button class="btn-md text-end float-right mr-2" label="Buat Pengajuan" theme="primary"
               icon="fas fa-folder-plus" onclick="location.href='{{ route('dosen.create') }}'" />
-          </div>
-          <x-adminlte-datatable id="table" :heads="$heads" striped hoverable>
+          </div> --}}
+          {{-- <x-adminlte-datatable id="table" :heads="$heads" striped hoverable>
             @foreach ($config['data'] as $row)
               <tr>
                 @foreach ($row as $cell)
@@ -49,7 +49,7 @@
                 @endforeach
               </tr>
             @endforeach
-        </x-adminlte-card>
+        </x-adminlte-card> --}}
       </div>
     </div>
   </div>
