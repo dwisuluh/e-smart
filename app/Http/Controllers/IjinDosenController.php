@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Dosen;
+use Barryvdh\DomPDF\PDF;
 use App\Models\IjinDosen;
+use App\Models\AnggotaIjin;
 use Illuminate\Http\Request;
 
 class IjinDosenController extends Controller
@@ -75,7 +77,6 @@ class IjinDosenController extends Controller
             return redirect()->route('ijin-dosen.index')->with('success', 'Pengajuan Ijin Kegiatan berhasil dilakukan.');
         }
         return redirect()->back()->withErrors(['msg', 'Terjadi kesalahan saat mengunggah file.']);
-
     }
 
     /**
@@ -83,7 +84,9 @@ class IjinDosenController extends Controller
      */
     public function show(IjinDosen $ijinDosen)
     {
-        //
+        $data = AnggotaIjin::with('Dosen')->where('ijin_dosen_id', $ijinDosen->id)->get();
+        // \dd($data);
+        return view("ijin.show", \compact('data'));
     }
 
     /**
@@ -91,7 +94,8 @@ class IjinDosenController extends Controller
      */
     public function edit(IjinDosen $ijinDosen)
     {
-        //
+        $pdf = PDF::loadview($ijinDosen->file_path);
+        return view('ijin.edit', \compact('ijinDosen'));
     }
 
     /**

@@ -36,8 +36,8 @@
                     <th>No</th>
                     <th>Tujuan</th>
                     <th>Kegiatan</th>
-                    <th>Tanggal Mulai</th>
-                    <th>Tanggal Selesai</th>
+                    <th>Tanggal Pelaksanaan</th>
+                    <th>Tanggal Pengajuan</th>
                     <th>Status</th>
                     <th>Detail</th>
                   </tr>
@@ -62,7 +62,7 @@
       $('#data-ijin').DataTable({
         "paging": true,
         "lengthChange": true,
-        "searching": false,
+        "searching": true,
         "ordering": true,
         "info": true,
         "autoWidth": true,

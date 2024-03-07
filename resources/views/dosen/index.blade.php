@@ -95,7 +95,7 @@
   {{-- Themed --}}
   <x-adminlte-modal id="modalImport" title="Import Data Dosen" theme="maroon" v-centered icon="fas fa-bolt"
     size='lg'>
-
+    Format File *.xlsx dengan header tabel setiap kolom [ name , nip , nidn , no_telp ]
     {{-- <x-adminlte-input-file name="ifPholder" igroup-size="sm" placeholder="Choose a file...">
       <x-slot name="prependSlot">
         <div class="input-group-text bg-lightblue">

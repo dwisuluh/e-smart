@@ -10,4 +10,9 @@ class Dosen extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function anggotaIjin()
+    {
+        return $this->hasMany(AnggotaIjin::class);
+    }
 }

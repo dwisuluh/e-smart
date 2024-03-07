@@ -30,13 +30,13 @@ class HomeController extends Controller
         // dump($isSuperadmin); // Dump hasil evaluasi gate
 
         // $this->authorize('superadmin');
-        if (Auth::check()) {
-            if (Gate::allows("superadmin")) {
-                // Lakukan aksi untuk superadmin
-            } else {
-                // Lakukan aksi untuk pengguna lain
-            }
-        }
+        // if (Auth::check()) {
+        //     if (Gate::allows("superadmin")) {
+        //         // Lakukan aksi untuk superadmin
+        //     } else {
+        //         // Lakukan aksi untuk pengguna lain
+        //     }
+        // }
         return view('home');
 
     }
